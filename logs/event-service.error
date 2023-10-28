@@ -1,0 +1,105 @@
+[2m2023-10-24 21:52:27.321[0;39m [31mERROR[0;39m [35m42972[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.boot.SpringApplication              [0;39m [2m:[0;39m Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db/event-service-custom-v1.xml::20231014-1::Group 13:
+     Reason: liquibase.exception.DatabaseException: Table "EVENT_DETAILS" already exists; SQL statement:
+CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID)) [42101-200] [Failed SQL: (42101) CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID))]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at com.event.service.EventDetailsApplication.main(EventDetailsApplication.java:10)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:108)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set db/event-service-custom-v1.xml::20231014-1::Group 13:
+     Reason: liquibase.exception.DatabaseException: Table "EVENT_DETAILS" already exists; SQL statement:
+CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID)) [42101-200] [Failed SQL: (42101) CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID))]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:124)
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:265)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:264)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2404)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 26 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set db/event-service-custom-v1.xml::20231014-1::Group 13:
+     Reason: liquibase.exception.DatabaseException: Table "EVENT_DETAILS" already exists; SQL statement:
+CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID)) [42101-200] [Failed SQL: (42101) CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID))]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:695)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:49)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:111)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:110)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:94)
+	at liquibase.Scope.lambda$child$0(Scope.java:177)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:176)
+	at liquibase.Scope.child(Scope.java:155)
+	at liquibase.Scope.child(Scope.java:239)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:66)
+	... 44 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Table "EVENT_DETAILS" already exists; SQL statement:
+CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID)) [42101-200] [Failed SQL: (42101) CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID))]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:393)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:82)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:150)
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1279)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1261)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:660)
+	... 64 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EVENT_DETAILS" already exists; SQL statement:
+CREATE TABLE PUBLIC.EVENT_DETAILS (ID BIGINT AUTO_INCREMENT NOT NULL, TITLE VARCHAR(255), DESCRIPTION VARCHAR(255), LOCATION VARCHAR(255), PRICE VARCHAR(255), CREATE_TS TIMESTAMP DEFAULT NOW(), CONSTRAINT EVENT_DETAILS_PK PRIMARY KEY (ID)) [42101-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:89)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:228)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:389)
+	... 69 common frames omitted
+

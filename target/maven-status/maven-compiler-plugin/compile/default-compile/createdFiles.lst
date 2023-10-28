@@ -1,0 +1,5 @@
+com/event/service/repository/EventDetailsRepo.class
+com/event/service/controller/EventDetailsController.class
+com/event/service/model/EventDetails.class
+com/event/service/EventDetailsApplication.class
+com/event/service/service/EventDetailsService.class
